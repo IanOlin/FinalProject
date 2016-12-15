@@ -74,9 +74,9 @@ module fpu (
 			assign zSign = 1;
 			assign zFrac = ~(zSignif[51:0]-52'b1);			
 		end
-		if (zSignif ==0 ) begin
+		if (zSignif[52] ==0 ) begin
 			assign zSign = 0;
-			assign zFrac = zSignif[51:0];
+			assign zFrac = zSignif[51:0]; // Needs to be normalized, this is generating erros.
 		end
 		assign zExp = bigExp;
 	end

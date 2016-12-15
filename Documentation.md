@@ -2,20 +2,15 @@
 
 ## Ian Paul
 
-### What did you do?
-
 This project is an implementation of an FPU - Floating Point Unit - the part of the CPU that can do more advanced math than a basic ALU (Arithmetic Logic Unit) at a hardware level. The goal was to implement a verilog FPU that could handle addition, subtraction, multiplication, and division; notably better than an ALU which can only add and subtract. Additionally an FPU acts on IEEE 754 floating point numbers rather than just integers. The floating point spec translates to a range of about 10^-38 to 10^38 for 32 bit or 10^-308 to 10^308, a way wider range than for a 32 bit signed integer, which in two's complement goes from -128 to 127.
 
-### Why did you do it?
 
 Implementing an FPU seemed like an interesting choice for a final project because hard FPUs appear very commonly in modern chips and let them do more opperations that are interesting to humans (multiplication, addition of large numbers) more easily. An FPU also fit in well with the end of the class. It's related to the rest of the work done over the semester and continues to build off of the skills (working out block diagrams, building iteratively with verilog) developed in the class. Additionally, I like math and FPUs definitely help computers do math.
 
-### How did you do it?
-
 Overall, the rough design was inspired by an explanation of FPUs from the textbook _Computer Organization and Architechture_ by William Stallings. From there I reduced the block diagram to a simpler form that used more behavior verilog and let me skip some of the repetitive steps. One interesting design choice I made along the way was switching to double precision floating point numbers rather than single precision IEEE 754 (64 bit from 32 bit). This came mostly from the $realtobits and $bitstoreal functions from verilog which made debugging the 64 bit version much easier (credit to Franton for this discovery). Aside from that, there weren't any other major design decisions. Most of the work for this was in working out the logic and doing the implementation. Using the model of work from building the CPU (use smaller functions which the main program calls) was a big help in this project. Even when working alone, this was helpful. It made unit testing and debugging much more doable. The other major difference from other labs was my use of behavior verilog. I try to and did use much more in this project to mixed results - it makes some steps easier, but the code is less readable and doesn't convey the relationship to hardware as much.
-
-### How can someone else build on it?
 
 All of the code to further develope this project is in this repository. Currently, it's drifted away from any written schematic, but the intention is that the function and variable naming should be clear and the inline comments indicate the flow of the program. There are no scripts used to build this project, to build compile the main file (the main test) with Icarus Verilog. There are internal warnings that occur when the file is compiled that do not cause issues at runtime; they can be safely ignored. The 2 outside resources I used for this project are the test by Stallings and conversations with Franton about how, in terms of logic and structure, an FPU works. The biggest issues working on this project have and continue to be verilog issues. I strongly encourage using Verilator's linter to supplement Icarus Verilog's error statements.
 
 On the whole, this was a good project to end the class on. It gave me a chance to test my skills on my own and explore a topic of moderate difficulty. My biggest regret for this project is not starting it earlier or ever giving it the attention it deserved. My work plan was accurate, but I pushed the start dates and times for some sections into reading period and finals week. While I still feel like I learned a lot from the work I did, I definitely don't think that I did as well on this project as I could have. There are more functions (multiplication and division) that I would have liked to implement, as well as a cleaner implementation of add . The biggest TODOs for this project are to finish all the functions standard to an FPU. 
+
+In terms of the areas mentioned on the repository, I feel like I met most of them exept for the demo and choosing my goal correctly. With better planning I would have been able to go further with this project, but I ended up not finishing at the lowest level.
